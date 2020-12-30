@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import Navbar from "./Components/Navbar";
-import { BrowserRouter, Route } from "react-router-dom";
-import Home from './Components/Home'
-import About from './Components/About'
-import Contacts from './Components/Contacts'
-
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from "./Components/Home";
+import About from "./Components/About";
+import Contacts from "./Components/Contacts";
+import Post from "./Components/Post";
 
 class App extends Component {
   render() {
@@ -12,9 +12,12 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Navbar />
-          <Route exact path='/' component={Home}/>
-          <Route path='/about' component={About}/>
-          <Route path='/contacts' component={Contacts}/>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/contacts" component={Contacts} />
+            <Route path="/:post_id" component={Post} />
+          </Switch>
         </div>
       </BrowserRouter>
     );
